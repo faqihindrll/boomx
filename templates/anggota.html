@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en-US" dir="ltr">
+
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Information Retrieval</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='assets/img/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='assets/img/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='assets/img/LogoPolstatSTIS.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='assets/img/LogoPolstatSTIS.png') }}">
+    <link rel="manifest" href="{{ url_for('static',filename='assets/favicons/manifest.json') }}">
+    <meta name="msapplication-TileImage" content="{{ url_for('static',filename='assets/img/favicons/mstile-150x150.png')}}">
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="{{url_for('static', filename='assets/css/theme.css')}}" rel="stylesheet" />
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <style>
+      
+.new_footer_area {
+  background: #fbfbfd;
+}
+
+
+.new_footer_top {
+  padding: 120px 0px 270px;
+  position: relative;
+    overflow-x: hidden;
+}
+.new_footer_area .footer_bottom {
+  padding-top: 5px;
+  padding-bottom: 50px;
+}
+.footer_bottom {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 20px;
+  color: #7f88a6;
+  padding: 27px 0px;
+}
+.new_footer_top .company_widget p {
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 28px;
+  color: #6a7695;
+  margin-bottom: 20px;
+}
+.new_footer_top .company_widget .f_subscribe_two .btn_get {
+  border-width: 1px;
+  margin-top: 20px;
+}
+.btn_get_two:hover {
+  background: transparent;
+  color: #5e2ced;
+}
+.btn_get:hover {
+  color: #fff;
+  background: #6754e2;
+  border-color: #6754e2;
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
+  text-decoration: none;
+  outline: none;
+}
+
+
+
+.new_footer_top .f_widget.about-widget .f_list li a:hover {
+  color: #5e2ced;
+}
+.new_footer_top .f_widget.about-widget .f_list li {
+  margin-bottom: 11px;
+}
+.f_widget.about-widget .f_list li:last-child {
+  margin-bottom: 0px;
+}
+.f_widget.about-widget .f_list li {
+  margin-bottom: 15px;
+}
+.f_widget.about-widget .f_list {
+  margin-bottom: 0px;
+}
+.new_footer_top .f_social_icon a {
+  width: 44px;
+  height: 44px;
+  line-height: 43px;
+  background: transparent;
+  border: 1px solid #e2e2eb;
+  font-size: 24px;
+}
+.f_social_icon a {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  font-size: 14px;
+  line-height: 45px;
+  color: #858da8;
+  display: inline-block;
+  background: #ebeef5;
+  text-align: center;
+  -webkit-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.ti-facebook:before {
+  content: "\e741";
+}
+.ti-twitter-alt:before {
+  content: "\e74b";
+}
+.ti-vimeo-alt:before {
+  content: "\e74a";
+}
+.ti-pinterest:before {
+  content: "\e731";
+}
+
+.btn_get_two {
+  -webkit-box-shadow: none;
+  box-shadow: none;
+  background: #5e2ced;
+  border-color: #5e2ced;
+  color: #fff;
+}
+
+.btn_get_two:hover {
+  background: transparent;
+  color: #5e2ced;
+}
+
+.new_footer_top .f_social_icon a:hover {
+  background: #5e2ced;
+  border-color: #5e2ced;
+color:white;
+}
+.new_footer_top .f_social_icon a + a {
+  margin-left: 4px;
+}
+.new_footer_top .f-title {
+  margin-bottom: 30px;
+  color: #263b5e;
+}
+.f_600 {
+  font-weight: 600;
+}
+.f_size_18 {
+  font-size: 18px;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: #4b505e;
+}
+.new_footer_top .f_widget.about-widget .f_list li a {
+  color: #6a7695;
+}
+
+
+.new_footer_top .footer_bg {
+  position: absolute;
+  bottom: 0;
+  background: url("{{url_for('static',filename='assets/img/bgcandi.png')}}") no-repeat scroll center 0;
+  width: 100%;
+  height: 266px;
+}
+
+.new_footer_top .footer_bg .footer_bg_one {
+  background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+  width: 330px;
+  height: 105px;
+background-size:100%;
+  position: absolute;
+  bottom: 0;
+  left: 30%;
+  -webkit-animation: myfirst 22s linear infinite;
+  animation: myfirst 22s linear infinite;
+}
+
+.new_footer_top .footer_bg .footer_bg_two {
+  background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
+  width: 88px;
+  height: 100px;
+background-size:100%;
+  bottom: 0;
+  left: 38%;
+  position: absolute;
+  -webkit-animation: myfirst 30s linear infinite;
+  animation: myfirst 30s linear infinite;
+}
+
+
+
+
+@-moz-keyframes myfirst {
+0% {
+  left: -25%;
+}
+100% {
+  left: 100%;
+}
+}
+
+@-webkit-keyframes myfirst {
+0% {
+  left: -25%;
+}
+100% {
+  left: 100%;
+}
+}
+
+@keyframes myfirst {
+0% {
+  left: -25%;
+}
+100% {
+  left: 100%;
+}
+}
+
+/* For WebKit browsers (Chrome, Safari, newer versions of Edge) */
+          ::-webkit-scrollbar {
+            width: 14px; 
+          }
+
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            padding : 3px;
+          }
+
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background-color: #0674C8;
+            border-radius: 6px;
+          }
+
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #0674A8;
+          }
+
+    </style>
+
+  </head>
+
+
+  <body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top backdrop" data-navbar-on-scroll="data-navbar-on-scroll" style="background-image: none; background-color: rgba(249, 250, 253, 0.44);">
+        <div class="container">
+          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.svg" height="31" alt="logo" /></a> -->
+          <a href="/" class="navbar-brand navbar-logo">
+            <img class="logo" src="/static/assets/img/LogoPolstatSTIS.png" width="45" height="45" alt="">
+            <span class="keterangan-logo">
+                    <span>
+                        <strong class="medium">INFORMATION RETRIEVAL</strong>
+                    </span>
+                    <span class="small">3SD3 | POLITEKNIK STATISTIKA STIS</span>
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}">Home</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}#prediksi">Prediksi</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}#visualisasi">Visualisasi</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}#superhero">Team</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="{{ url_for('home')}}#sectionfooter">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="pt-7">
+        <div class="container">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-md-start text-center py-6">
+              <h1 class= "fs-9 fw-bold">Anggota Kelas 3SD3</h1>
+              <p class="mb-6 lead text-secondary">Website ini merupakan hasil pekerjaan seluruh anggota kelas 3SD3 sebagai pemenuhan tugas mata kuliah Information Retrieval</p>
+              <div class="text-center text-md-start">
+                <a class="btn btn-warning btn-md" href="#kelompok">Anggota</a>
+              </div>
+            </div>
+            <div class="col-md-6 text-end"><img class="pt-7 pt-md-0 img-fluid" src="{{url_for('static', filename='assets/img/anggota/3sd3.png')}}" alt="" /></div>
+          </div>
+        </div>
+      </section>
+
+        <!-- ============================================-->
+        <!-- <section> begin ============================-->
+        <section class="pt-5 pt-md-9 mb-6" id="kelompok">
+
+            <div class="bg-holder z-index--1 bottom-0 d-none d-lg-block" style="background-image:url('{{url_for('static',filename='assets/img/category/shape.png')}}');opacity:.5;">
+            </div>
+            <!--/.bg-holder-->
+    
+            <div class="container">
+              <h1 class="fs-9 fw-bold text-center"> Kelompok </h1>
+              <div class="row">
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon1.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#scrapping" style="text-decoration: none;">Tim Web Scrapping</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon3.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#preprocessing" style="text-decoration: none;">Tim Preprocessing Data</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon2.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#pelabelan" style="text-decoration: none;">Tim Pelabelan</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon4.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#visualisasi" style="text-decoration: none;">Tim Visualisasi Data</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon1.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#webv" style="text-decoration: none;">Tim Web Visualisasi</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon2.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#model" style="text-decoration: none;">Tim Model dan Evaluasi</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon3.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#webp" style="text-decoration: none;">Tim Web Prediksi</a></h4>
+                </div>
+
+                <div class="col-lg-3 col-sm-6 mb-2">
+                    <div class="d-flex justify-content-center">
+                        <img class= "ms-n3" src="{{url_for('static', filename='assets/img/category/icon4.png')}}" width="75" alt="Feature" />
+                    </div>
+                    <h4 class="text-center"><a class="" href="#interpret" style="text-decoration: none;">Tim Interpretasi</a></h4>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="scrapping">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim <i>Web Scrapping</i></h1>
+              <p class="mb-6 text-secondary">Jobdesc : Melakukan pengambilan data ulasan review mengenai Candi Borobudur dari Google Maps dan TripAdvisor</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card">
+                    <img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH SUBSEKSI MODUL_Anugerah Surya Atmaja.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Anugerah Surya</p>
+                      <p class="text-secondary">222111912</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Farhan Maulana - FARHAN MAULANA.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Farhan Maulana</p>
+                        <p class="text-secondary">222112043</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Fathul Mubin Gufron - FATHUL MUBIN GUFRON.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Fathul Mubin</p>
+                        <p class="text-secondary">222112048</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/TI_Innas Khoirun Chisan.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Innas Choirun</p>
+                        <p class="text-secondary">222112112</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+        <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="preprocessing">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim <i>Preprocessing</i> Data</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Melakukan pengolahan terhadap data hasil <i>scrapping</i> sehingga bisa dilakukan analisis</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Andrew Maruli Tua Tampubolon - ANDREW MARULI TUA TAMPUBOLON.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Andrew Maruli Tua</p>
+                      <p class="text-secondary">222111894</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Metodologi_1_Zulfaa_Dwi_Oktavian - ZULFAA DWI OKTAVIAN (1).png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Zulfa Dwi Oktavian</p>
+                        <p class="text-secondary">222112434</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+        <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="pelabelan">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Pelabelan dan Perhitungan Nilai Agreement</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Membuat buku pedoman pelabelan, menghitung nilai aggreement dan alpha inter-rater reliability setelah pelabelan </p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH 6_Elfina Dea Rosalita.png')}}" alt="" />
+                    <div class="card-body ps-0 ">
+                      <p class="text-secondary">Elfina Dea Rosalita</p>
+                      <p class="text-secondary">222112009</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner2_Almira Utami - ALMIRA UTAMI.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Almira Utami</p>
+                        <p class="text-secondary">222111877</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Pengolahan 2_Riska Fazilla - RISKA FAZILLA (1).png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Riska Fazilla</p>
+                        <p class="text-secondary">222112325</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="visualisasi">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Analisis Data Eksploratif dan Visualisasi</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Melakukan ekplorasi dan visualisasi dataset review</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Annisa Nurul Azmi - ANNISA NURUL AZMI.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Annisa Nurul Azmi</p>
+                      <p class="text-secondary">222111907</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner Modul 2_Andi Ardiansyah Nasir - ANDI ARDIANSYAH NASIR.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Andi Ardiansyah</p>
+                        <p class="text-secondary">222111890</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Dinda Alfira Ilmayanti - DINDA ALFIRA ILMAYANTI.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Dinda Alfira</p>
+                        <p class="text-secondary">222111993</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+        <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="model">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Pemodelan Klasifikasi dan Evaluasi</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Membangun model prediksi dan menentukan model terbaik menggunakan data hasil pelabelan</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Agnes Regita Berlianni (1).png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Agnes Regita</p>
+                      <p class="text-secondary">222111853</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/IMG_4402-removebg - SRI NURMALA NINGSIH.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Sri Nurmala</p>
+                        <p class="text-secondary">222112379</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Kevin Ananda Puspita - KEVIN ANANDA PUSPITA.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                    <p class="text-secondary">Kevin Ananda</p>
+                    <p class="text-secondary">222112133</p>
+                    </div>
+                </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/gilang.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                        <p class="text-secondary">Gilang Abdul J.</p>
+                        <p class="text-secondary">222112076</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/fathimah.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Fathimah Az-Zahra</p>
+                        <p class="text-secondary">222112047</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Stenislaus Angga Aprianto - STENISLAUS ANGGA APRIANTO.png')}}" alt="" />
+                        <div class="card-body ps-0">
+                          <p class="text-secondary">Stenislaus Angga Aprianto</p>
+                          <p class="text-secondary">222112380</p>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 2_Azhari - AZHARI -.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Azhari</p>
+                        <p class="text-secondary">222111938</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Metodelogi 2_Diva Putra Pratama - DIVA PUTRA PRATAMA.png')}}" alt="" />
+                        <div class="card-body ps-0">
+                          <p class="text-secondary">Diva Putra Pratama</p>
+                          <p class="text-secondary">222111995</p>
+                      </div>
+                      </div>
+                  </div>
+                  <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Metodologi 1_Hanif Choirunnisa Hibatullah - HANIF CHOIRUNNISA HIBATULLAH.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Hanif Choirunnisa</p>
+                        <p class="text-secondary">222112086</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="col-md-3">
+                      <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/ken.png')}}" alt="" />
+                        <div class="card-body ps-0">
+                          <p class="text-secondary">Ken Regar Ridlo</p>
+                          <p class="text-secondary">222112131</p>
+                      </div>
+                      </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/kristian.png')}}" alt="" />
+                          <div class="card-body ps-0">
+                            <p class="text-secondary">Kristian Ernala</p>
+                            <p class="text-secondary">222112142</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Nindy Nur Setiawati - NINDY NUR SETIAWATI.png')}}" salt="" />
+                            <div class="card-body ps-0">
+                              <p class="text-secondary">Nindy Nur Setiawati</p>
+                              <p class="text-secondary">222112261</p>
+                          </div>
+                          </div>
+                      </div>
+                      <div class="col-md-3">
+                        <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Atanasius Alfandi - ATANASIUS ALFANDI.png')}}" alt="" />
+                          <div class="card-body ps-0">
+                            <p class="text-secondary">Atanasius Alfandi</p>
+                            <p class="text-secondary">222111929</p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-md-3">
+                          <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Azzahra Ramadhani W (1) - AZZAHRA RAMADHANI WIDYANTI (1).png')}}" alt="" />
+                            <div class="card-body ps-0">
+                              <p class="text-secondary">Azzahra Ramadhani</p>
+                              <p class="text-secondary">222111943</p>
+                          </div>
+                          </div>
+                      </div> 
+                      <div class="col-md-3">
+                        <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH MODUL_Aulia Azzahra.png')}}" alt="" />
+                          <div class="card-body ps-0">
+                            <p class="text-secondary">Aulia Azzahra</p>
+                            <p class="text-secondary">222111933</p>
+                        </div>
+                        </div>
+                    </div>              
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+    <!-- ============================================-->
+        <!-- <section> begin ============================-->
+          <section class="pt-2" id="webv">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Web Visualisasi</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Membangun web untuk menampilkan visualiasi data yang telah dilakukan</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Metodologi 2_Mukhamad Dinda M Y - MUKHAMAD DINDA MANIS YULIANTO.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">M. Dinda Manis</p>
+                      <p class="text-secondary">222112227</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH MODUL_Sofi Zamzanah.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Sofi Zamzanah</p>
+                        <p class="text-secondary">222112376</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/TI_Rahadian Eka Bagus Indra Rinangku.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Rahadian Eka</p>
+                        <p class="text-secondary">222112300</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="webp">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Web Prediksi</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Membangun web untuk melakukan prediksi sentimen terhadap inputan yang diberikan pengguna</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH MODUL_Amelia Rahayu.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Amelia Rahayu</p>
+                      <p class="text-secondary">222111883</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/faqih.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Faqih Indra Lesmana</p>
+                        <p class="text-secondary">222112039</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH SUBSEKSI MODUL_Muhammad Restu Ilahi.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Muhammad Restu Ilahi</p>
+                        <p class="text-secondary">222112222</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Pengolahan 1_Nur Yudha Jati Prakoso - NUR YUDHA JATI PRAKOSO.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Nur Yudha Jati</p>
+                        <p class="text-secondary">222112273</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+    <!-- ============================================-->
+    <!-- <section> begin ============================-->
+        <section class="pt-2" id="interpret">
+
+            <div class="container">
+              <h1 class="fw-bold fs-6">Tim Pemodelan Topik</h1>
+              <p class="mb-6 text-secondary">Jobdesc : Melakukan pemodelan topik, berapa topik yang terbentuk dari sentimen positif dan negatif serta menginterpretasikan</p>
+              <div class="row">
+                <div class="col-md-3">
+                  <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH MODUL_Khuzaimah Putri.png')}}" alt="" />
+                    <div class="card-body ps-0">
+                      <p class="text-secondary">Khuzaimah Putri</p>
+                      <p class="text-secondary">222112137</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Kuesioner 1_Arsyka Laila Oktalia Siregar - ARSYKA LAILA OKTALIA SIREGAR.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Arsyka Laila Oktalia</p>
+                        <p class="text-secondary">222111925</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/BPH 6_Anisa Nur Oktaviani.png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Anisa Nur Oktaviani</p>
+                        <p class="text-secondary">222111902</p>
+                    </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card"><img class="card-img-top bg-facebook" src="{{url_for('static', filename='assets/img/anggota/Analisis 1_Sonya Ananta Panjaitan - SONYA ANANTA PANJAITAN (1).png')}}" alt="" />
+                      <div class="card-body ps-0">
+                        <p class="text-secondary">Sonya Ananta Panjaitan</p>
+                        <p class="text-secondary">222112377</p>
+                    </div>
+                    </div>
+                </div>
+              </div>
+            </div><!-- end of .container-->
+    
+          </section>
+    <!-- <section> close ============================-->
+    <!-- ============================================-->
+
+
+    
+   
+    
+
+     
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+    <div class="modal fade" id="popupVideo" tabindex="-1" aria-labelledby="popupVideo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <iframe class="rounded" style="width:100%;height:500px;" src="https://www.youtube.com/embed/N7-gniIB0Ls" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="vendors/@popperjs/popper.min.js"></script>
+    <script src="vendors/bootstrap/bootstrap.min.js"></script>
+    <script src="vendors/is/is.min.js"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="vendors/fontawesome/all.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <!-- WORD CLOUD -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+  <script>
+    function wordCloud(selector) {
+      var fill = d3.scale.category20();
+
+      var svg = d3.select(selector).append("svg")
+        .attr("width", 500)
+        .attr("height", 500)
+        .append("g")
+        .attr("transform", "translate(250,250)");
+
+      function draw(words) {
+        var cloud = svg.selectAll("g text")
+          .data(words, function(d) { return d.text; });
+
+        cloud.enter()
+          .append("text")
+          .style("font-family", "Impact")
+          .style("fill", function(d, i) { return fill(i); })
+          .attr("text-anchor", "middle")
+          .attr('font-size', 1)
+          .text(function(d) { return d.text; });
+
+        cloud.transition()
+          .duration(600)
+          .style("font-size", function(d) { return d.size + "px"; })
+          .attr("transform", function(d) {
+            return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+          })
+          .style("fill-opacity", 1);
+
+        cloud.exit()
+          .transition()
+          .duration(200)
+          .style('fill-opacity', 1e-6)
+          .attr('font-size', 1)
+          .remove();
+      }
+
+      return {
+        update: function(words) {
+          d3.layout.cloud().size([500, 500])
+            .words(words)
+            .padding(5)
+            .rotate(function() { return ~~(Math.random() * 2) * 90; })
+            .font("Impact")
+            .fontSize(function(d) { return d.size; })
+            .on("end", draw)
+            .start();
+        }
+      };
+    }
+
+    var wordsData = [
+      { text: "borobudur", size: 40 },
+      { text: "keajaiban", size: 20 },
+      { text: "dunia", size: 25 },
+      { text: "candi", size: 45 },
+      { text: "adalah", size: 9 },
+      { text: "terbesar", size: 15 },
+      { text: "di", size: 100 },
+      { text: "murah", size: 66 },
+      { text: "mahal", size: 64 },
+      { text: "sepi", size: 70 },
+      { text: "jawa", size: 110 },
+      { text: "keren", size: 35 },
+      { text: "panas", size: 55 },
+      { text: "budha", size: 95 }
+    ];
+
+    function showNewWords(vis, i) {
+      i = i || 0;
+
+      vis.update(wordsData);
+      setTimeout(function() { showNewWords(vis, i + 1); }, 2000);
+    }
+
+    var myWordCloud = wordCloud('.word');
+    showNewWords(myWordCloud);
+
+  </script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap" rel="stylesheet">
+  </body>
+
+  
+
+<footer class="new_footer_area bg_color">
+  <div class="new_footer_top">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-3 col-md-6">
+                  <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                      <h3 class="f-title f_600 t_color f_size_18">Kritik &amp; saran</h3>
+                      <p>Berikan segala masukan agar kami bisa menyajikan yang terbaik kedepannya.</p>
+                      <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                          <input type="text" name="EMAIL" class="form-control memail" placeholder="Berikan masukan disini">
+                          <button class="btn btn_get btn_get_two" type="submit">Kirim</button>
+                          <p class="mchimp-errmessage" style="display: none;"></p>
+                          <p class="mchimp-sucmessage" style="display: none;"></p>
+                      </form>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                      <h3 class="f-title f_600 t_color f_size_18">Features</h3>
+                      <ul class="list-unstyled f_list">
+                          <li><a href="{{ url_for('home')}}">Home</a></li>
+                          <li><a href="{{ url_for('home')}}#about">About</a></li>
+                          <li><a href="{{ url_for('home')}}#prediksi">Prediction</a></li>
+                          <li><a href="{{ url_for('home')}}#visualisasi">Visualization</a></li>
+                          <li><a href="{{ url_for('home')}}#superhero">Team</a></li>
+                          <li><a href="{{ url_for('home')}}#sectionfooter">Contact Us</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                      <h3 class="f-title f_600 t_color f_size_18">Aspect</h3>
+                      <ul class="list-unstyled f_list">
+                          <li><a href="#">Attraction</a></li>
+                          <li><a href="#">Amenities</a></li>
+                          <li><a href="#">Access</a></li>
+                          <li><a href="#">Price</a></li>
+                          <li><a href="#">No Aspect</a></li>
+                      </ul>
+                  </div>
+              </div>
+              <div class="col-lg-3 col-md-6">
+                  <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                      <h3 class="f-title f_600 t_color f_size_18">Contact Us</h3>
+                      <div class="f_social_icon">
+                          <a class=" fab fa-facebook link-300 text-decoration-none fs-lg-1" style="color:white;" target="_blank" href="https://www.youtube.com/@PoliteknikStatistikaSTIS">
+                            <img src="{{url_for('static', filename='assets/img/youtube.png')}}" width="20" alt="" /></a>
+                            <a class="fab link-300 text-decoration-none fs-lg-1" style="color:white;" target="_blank" href="https://www.instagram.com/mal3sd3h/">
+                              <img src="{{url_for('static', filename='assets/img/instagram.png')}}" width="20" alt="" />
+                            </a>
+                            <a class="fab link-300 text-decoration-none fs-lg-1"style="color:white;"  target="_blank" href="https://www.facebook.com/PolstatSTIS/">
+                              <img src="{{url_for('static', filename='assets/img/facebook.png')}}" width="20" alt="" /></a>
+                              <a class="fab  link-300 text-decoration-none fs-lg-1"style="color:white;"  target="_blank" href="https://www.stis.ac.id/">
+                                <img src="{{url_for('static', filename='assets/img/LogoPolstatSTIS.png')}}" width="20" alt="" /></a>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="footer_bg">
+          <div class="footer_bg_one"></div>
+          <div class="footer_bg_two"></div>
+      </div>
+  </div>
+  <div class="footer_bottom">
+      <div class="container">
+          <div class="row align-items-center">
+              <div class="col-lg-6 col-sm-7">
+                  <p class="mb-0 f_400">© 3SD3 | Politeknik Statistik STIS 2023 All rights reserved.</p>
+              </div>
+              <div class="col-lg-6 col-sm-5 text-right">
+                  <p>Made with love by Mal3SD3h</a></p>
+              </div>
+          </div>
+      </div>
+  </div>
+</footer>
+</html>

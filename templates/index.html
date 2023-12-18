@@ -1,9 +1,1037 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-US" dir="ltr">
+
   <head>
-    <title>Hello World</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <!-- ===============================================-->
+    <!--    Document Title-->
+    <!-- ===============================================-->
+    <title>Information Retrieval</title>
+
+
+    <!-- ===============================================-->
+    <!--    Favicons-->
+    <!-- ===============================================-->
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for('static',filename='assets/img/favicons/apple-touch-icon.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static',filename='assets/img/favicons/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static',filename='assets/img/LogoPolstatSTIS.png') }}">
+    <link rel="shortcut icon" type="image/x-icon" href="{{ url_for('static',filename='assets/img/LogoPolstatSTIS.png') }}">
+    <link rel="manifest" href="{{ url_for('static',filename='assets/favicons/manifest.json') }}">
+    <meta name="msapplication-TileImage" content="{{ url_for('static',filename='assets/img/favicons/mstile-150x150.png')}}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <meta name="theme-color" content="#ffffff">
+
+
+    <!-- ===============================================-->
+    <!--    Stylesheets-->
+    <!-- ===============================================-->
+    <link href="{{url_for('static', filename='assets/css/theme.css')}}" rel="stylesheet" />
+    <style>
+      /* For WebKit browsers (Chrome, Safari, newer versions of Edge) */
+          ::-webkit-scrollbar {
+            width: 14px; 
+          }
+
+          /* Track */
+          ::-webkit-scrollbar-track {
+            background-color: #f1f1f1;
+            padding : 3px;
+          }
+
+          /* Handle */
+          ::-webkit-scrollbar-thumb {
+            background-color: #0674C8;
+            border-radius: 6px;
+          }
+
+          /* Handle on hover */
+          ::-webkit-scrollbar-thumb:hover {
+            background-color: #0674A8;
+          }
+          
+          .new_footer_area {
+            background: #fbfbfd;
+          }
+          
+          
+          .new_footer_top {
+            padding: 120px 0px 270px;
+            position: relative;
+              overflow-x: hidden;
+          }
+          .new_footer_area .footer_bottom {
+            padding-top: 5px;
+            padding-bottom: 50px;
+          }
+          .footer_bottom {
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 20px;
+            color: #7f88a6;
+            padding: 27px 0px;
+          }
+          .new_footer_top .company_widget p {
+            font-size: 16px;
+            font-weight: 300;
+            line-height: 28px;
+            color: #6a7695;
+            margin-bottom: 20px;
+          }
+          .new_footer_top .company_widget .f_subscribe_two .btn_get {
+            border-width: 1px;
+            margin-top: 20px;
+          }
+          .btn_get_two:hover {
+            background: transparent;
+            color: #5e2ced;
+          }
+          .btn_get:hover {
+            color: #fff;
+            background: #6754e2;
+            border-color: #6754e2;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+          }
+          a:hover, a:focus, .btn:hover, .btn:focus, button:hover, button:focus {
+            text-decoration: none;
+            outline: none;
+          }
+          
+          .new_footer_top .f_widget.about-widget .f_list li a:hover {
+            color: #5e2ced;
+          }
+          .new_footer_top .f_widget.about-widget .f_list li {
+            margin-bottom: 11px;
+          }
+          .f_widget.about-widget .f_list li:last-child {
+            margin-bottom: 0px;
+          }
+          .f_widget.about-widget .f_list li {
+            margin-bottom: 15px;
+          }
+          .f_widget.about-widget .f_list {
+            margin-bottom: 0px;
+          }
+          .new_footer_top .f_social_icon a {
+            width: 44px;
+            height: 44px;
+            line-height: 43px;
+            background: transparent;
+            border: 1px solid #e2e2eb;
+            font-size: 24px;
+          }
+          .f_social_icon a {
+            width: 46px;
+            height: 46px;
+            border-radius: 50%;
+            font-size: 14px;
+            line-height: 45px;
+            color: #858da8;
+            display: inline-block;
+            background: #ebeef5;
+            text-align: center;
+            -webkit-transition: all 0.2s linear;
+            -o-transition: all 0.2s linear;
+            transition: all 0.2s linear;
+          }
+          .ti-facebook:before {
+            content: "\e741";
+          }
+          .ti-twitter-alt:before {
+            content: "\e74b";
+          }
+          .ti-vimeo-alt:before {
+            content: "\e74a";
+          }
+          .ti-pinterest:before {
+            content: "\e731";
+          }
+          
+          .btn_get_two {
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            background: #5e2ced;
+            border-color: #5e2ced;
+            color: #fff;
+          }
+          
+          .btn_get_two:hover {
+            background: transparent;
+            color: #5e2ced;
+          }
+          
+          .new_footer_top .f_social_icon a:hover {
+            background: #5e2ced;
+            border-color: #5e2ced;
+          color:white;
+          }
+          .new_footer_top .f_social_icon a + a {
+            margin-left: 4px;
+          }
+          .new_footer_top .f-title {
+            margin-bottom: 30px;
+            color: #263b5e;
+          }
+          .f_600 {
+            font-weight: 600;
+          }
+          .f_size_18 {
+            font-size: 18px;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            color: #4b505e;
+          }
+          .new_footer_top .f_widget.about-widget .f_list li a {
+            color: #6a7695;
+          }
+          
+          
+          .new_footer_top .footer_bg {
+            position: absolute;
+            bottom: 0;
+            background: url("{{url_for('static',filename='assets/img/bgcandi.png')}}") no-repeat scroll center 0;
+            width: 100%;
+            height: 266px;
+          }
+          
+          .new_footer_top .footer_bg .footer_bg_one {
+            background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEia0PYPxwT5ifToyP3SNZeQWfJEWrUENYA5IXM6sN5vLwAKvaJS1pQVu8mOFFUa_ET4JuHNTFAxKURFerJYHDUWXLXl1vDofYXuij45JZelYOjEFoCOn7E6Vxu0fwV7ACPzArcno1rYuVxGB7JY6G7__e4_KZW4lTYIaHSLVaVLzklZBLZnQw047oq5-Q/s16000/volks.gif") no-repeat center center;
+            width: 330px;
+            height: 105px;
+          background-size:100%;
+            position: absolute;
+            bottom: 0;
+            left: 30%;
+            -webkit-animation: myfirst 22s linear infinite;
+            animation: myfirst 22s linear infinite;
+          }
+          
+          .new_footer_top .footer_bg .footer_bg_two {
+            background: url("https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhyLGwEUVwPK6Vi8xXMymsc-ZXVwLWyXhogZxbcXQYSY55REw_0D4VTQnsVzCrL7nsyjd0P7RVOI5NKJbQ75koZIalD8mqbMquP20fL3DxsWngKkOLOzoOf9sMuxlbyfkIBTsDw5WFUj-YJiI50yzgVjF8cZPHhEjkOP_PRTQXDHEq8AyWpBiJdN9SfQA/s16000/cyclist.gif") no-repeat center center;
+            width: 88px;
+            height: 100px;
+          background-size:100%;
+            bottom: 0;
+            left: 38%;
+            position: absolute;
+            -webkit-animation: myfirst 30s linear infinite;
+            animation: myfirst 30s linear infinite;
+          }
+          
+          
+          
+          
+          @-moz-keyframes myfirst {
+          0% {
+            left: -25%;
+          }
+          100% {
+            left: 100%;
+          }
+          }
+          
+          @-webkit-keyframes myfirst {
+          0% {
+            left: -25%;
+          }
+          100% {
+            left: 100%;
+          }
+          }
+          
+          @keyframes myfirst {
+          0% {
+            left: -25%;
+          }
+          100% {
+            left: 100%;
+          }
+          }
+
+      .accordion-button {
+        padding-left: 0; /* Menghilangkan padding kiri */
+        padding-right: 0;
+        background-color: #ffffff;
+        text-align: left; /* Aligment tulisan ke kiri */
+        width: 100%; /* Lebar tombol 100% agar tulisan mepet ke kiri */
+        justify-content: flex-start; /* Posisi konten ke kiri */
+      }
+      
+    
+      .accordion-item {
+        border: none; /* Menghilangkan border */
+        background-color: #ffffff;
+      }
+
+      .accordion-body {
+        margin-left: 0; /* Menghilangkan margin kiri pada isi accordion */
+        padding: 0; 
+      }
+
+      .accordion-header{
+        background-color: #ffffff;
+      }
+    </style>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
   </head>
+
+
   <body>
-    <h1>Hello World!</h1>
-  </body>
+
+    <!-- ===============================================-->
+    <!--    Main Content-->
+    <!-- ===============================================-->
+    <main class="main" id="top">
+      <nav class="navbar navbar-expand-lg navbar-light sticky-top" data-navbar-on-scroll="data-navbar-on-scroll">
+        <div class="container">
+          <!-- <a class="navbar-brand" href="index.html"><img src="assets/img/logo.svg" height="31" alt="logo" /></a> -->
+          <a href="{{ url_for('home')}}" class="navbar-brand navbar-logo">
+            <img class="logo" src="{{url_for('static', filename='assets/img/LogoPolstatSTIS.png')}}" width="45" height="45" alt>
+            <span class="keterangan-logo">
+                    <span>
+                        <strong class="medium">INFORMATION RETRIEVAL</strong>
+                    </span>
+                    <span class="small">3SD3 | POLITEKNIK STATISTIKA STIS</span>
+            </span>
+          </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"> </span></button>
+          <div class="collapse navbar-collapse border-top border-lg-0 mt-4 mt-lg-0" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto">
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#home">Home</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#about">About</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#prediksi">Prediksi</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#visualisasi">Visualisasi</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#superhero">Team</a></li>
+              <li class="nav-item"><a class="nav-link" aria-current="page" href="#sectionfooter">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <section class="pt-7">
+        <div class="container" id="home">
+          <div class="row align-items-center">
+            <div class="col-md-6 text-md-start text-center py-6">
+              <h1 class="mb-4 fs-9 fw-bold">Analisis Sentimen Wisata Candi Borobudur</h1>
+              <p class="mb-6 lead text-secondary">Candi Borobudur adalah sebuah candi Buddha yang terletak di Kecamatan Borobudur, Magelang, Jawa Tengah, Indonesia.</p>
+              <div class="text-center text-md-start">
+                <a class="btn btn-link btn-warning me-3 btn-lg fw-medium" href="#!" role="button" data-bs-toggle="modal" data-bs-target="#popupVideo" style="color: white;">
+                  <span class="fas fa-play me-2" style="color: white;"></span>Watch the video 
+                </a>
+                <a class="btn btn-outline-dark me-3 btn-lg fw-medium"  href="#prediksi" role="button" style="">
+                  <span ></span>Prediksi
+                </a>
+              </div>
+            </div>
+            <div class="col-md-6 text-end"><img class="pt-7 pt-md-0 img-fluid" src="{{url_for('static', filename='assets/img/candi.png')}}" alt="" /></div>
+            
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+        <section class="pt-5" id="manager">
+
+          <div class="container d-flex">
+            <div class="row">
+              <div class="col-lg-6 col-sm-12 d-flex justify-content-center align-items-center wordcloud_container">
+                <div class="word"></div>
+              </div>
+              <div class="col-lg-6 col-sm-12 d-flex">
+                <div class="d-flex flex-column justify-content-center">
+                  <p class="fs-7 fw-bold mb-2">APA KATA MEREKA?</p>
+                  <p class="mb-4 fw-medium text-secondary">
+                    Berikut merupakan ulasan terbanyak yang disampaikan pengunjung terkait di wisata Candi Borobudur.
+                  </p>
+                  <a class="btn btn-warning btn-md" style="width:11rem; text-align: left;"  href="#visualisasi">Selengkapnya..</a>
+                </div>
+              </div>
+            </div>
+          </div><!-- end of .container-->
+  
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+      
+
+
+  
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+      <section class="pt-5" id="about">
+
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-6">
+              <h5 class="text-secondary">About</h5>
+              <h2 class="mb-2 fs-7 fw-bold">Tentang Model Klasifikasi</h2>
+              <p class="fw-medium text-secondary">
+                Model klasifikasi menggunakan beberapa algoritma berdasarkan 
+                nilai akurasi dari masing-masing algoritma terbaik. Terdapat lima aspek dalam klasifikasi ini yaitu sebagai berikut.
+              </p>
+              <!-- Default Accordion -->
+              <div class="accordion" style="background-color: #ffffff;" id="accordionExample">
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button collapsed" style="background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                      Attraction : Support Vector Machine
+                    </button>
+                  </h2>
+                  <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Atraksi atau daya tarik wisata berkaitan dengan apa yang <strong>bisa dilihat</strong> (what to see) dan dilakukan (what to do) oleh wisatawan di sebuah destinasi wisata. Atraksi disebut juga objek dan daya tarik wisata yang diminati oleh wisatawan yang mencakup alam (perbukitan, perkebunan, gunung, danau, sungai dan pantai), budaya (kearifan masyarakat, seni dan kerajinan tangan, masakan khas, arsitektur rumah tradisional, dan situs arkeologi), dan buatan (wisata olahraga, berbelanja, pameran, taman bermain, festival dan konferensi).
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" style="background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                      Amenities : Support Vector Machine
+                    </button>
+                  </h2>
+                  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Amenities merupakan segala macam <strong>prasarana dan sarana</strong> yang diperlukan oleh wisatawan selama berada di daerah tujuan wisata, meliputi kebutuhan akomodasi, penyediaan makanan dan minuman, gedung pertunjukan, tempat hiburan (entertainment), dan tempat perbelanjaan.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" style="background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                      Access : Support Vector Machine
+                    </button>
+                  </h2>
+                  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Access merupakan sarana dan infrastruktur yang memberikan kemudahan kepada wisatawan untuk bergerak dari satu daerah ke daerah lain. Faktor-faktor yang penting terkait dengan <strong>aspek aksesibilitas</strong> wisata meliputi petunjuk arah, bandara, terminal, waktu yang dibutuhkan, biaya perjalanan, dan frekuensi transportasi menuju lokasi wisata.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" style="background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                      Price : Support Vector Machine
+                    </button>
+                  </h2>
+                  <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      Price merupakan <strong>nilai barang</strong> yang ditentukan dengan uang.
+                    </div>
+                  </div>
+                </div>
+                <div class="accordion-item">
+                  <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" style="background-color: #ffffff;" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                      No Aspect : Support Vector Machine
+                    </button>
+                  </h2>
+                  <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                      No aspect merupakan review yang <strong>tidak mencakup keempat aspek</strong> lainnya.
+                    </div>
+                  </div>
+                </div>
+              </div><!-- End Default Accordion Example -->
+            </div>
+            <div class="col-lg-6"><img class="img-fluid" src="{{ url_for('static',filename='assets/img/about.png')}}" alt="" style="width: 100%; "/></div>
+          </div>
+        </div><!-- end of .container-->
+
+      </section>
+      <!-- <section> close ============================-->
+      <!-- ============================================-->
+
+
+      <!-- ============================================-->
+      <!-- <section> begin ============================-->
+        <section class="pt-5 pt-md-9 mb-6" id="prediksi">
+
+          <div class="bg-holder z-index--1 bottom-0 d-none d-lg-block" style="background-image:url('{{ url_for('static',filename='assets/img/superhero/oval.png') }} ');opacity:.5; background-position: top !important ;">
+          </div>
+          <!--/.bg-holder-->
+  
+          <div class="container">
+            <h1 class="fs-9 fw-bold mb-4 text-center" id="prediksi"> Prediksi Ulasan </h1>
+            <div class="row">
+              <form class="mb-5 d-flex">
+                <input class="form-control me-2" type="ulasan" placeholder="Masukkan ulasan..." aria-label="phone" id="message" />
+                <button class="btn btn-warning fw-medium py-1" type="button" onclick="predict()">Submit</button>
+              </form>
+            </div>
+            <!-- <div class="text-center"><button class="btn btn-warning fw-medium py-1">Sign up Now</button></div> -->
+            <div class="row mt-4 ">
+              <div class="col mb-2 d-flex flex-column align-items-center"> 
+                <img class="mb-3" src="{{ url_for('static',filename='assets/img/category/attraction.png')}}" width="50" alt="Feature" />
+                <h4 class="mb-3">Attraction</h4>
+                <div class="spinner-border text-primary loading" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mb-0 fw-small" id="attractionResult"></p>
+              </div>
+              <div class="col mb-2 d-flex flex-column align-items-center"> 
+                <img class="mb-3" src="{{ url_for('static',filename='assets/img/category/amenities.png')}}" width="50" alt="Feature" />
+                <h4 class="mb-3">Amenities</h4>
+                <div class="spinner-border text-primary loading" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mb-0 fw-small" id="amenitiesResult"></p>
+              </div>
+              <div class="col mb-2 d-flex flex-column align-items-center"> 
+                <img class="mb-3" src="{{ url_for('static',filename='assets/img/category/access.png')}}" width="50" alt="Feature" />
+                <h4 class="mb-3">Access</h4>
+                <div class="spinner-border text-primary loading" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mb-0 fw-small" id="accessResult"></p>
+              </div>
+              <div class="col mb-2 d-flex flex-column align-items-center"> 
+                <img class="mb-3" src="{{ url_for('static',filename='assets/img/category/price.png')}}" width="50" alt="Feature" />
+                <h4 class="mb-3">Price</h4>
+                <div class="spinner-border text-primary loading" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mb-0 fw-small" id="priceResult"></p>
+              </div>
+              <div class="col mb-2 d-flex flex-column align-items-center"> 
+                <img class="mb-3" src="{{ url_for('static',filename='assets/img/category/noaspect.png')}}" width="50" alt="Feature" />
+                <h4 class="mb-3">No Aspect</h4>
+                <div class="spinner-border text-primary loading" style="display:none;" role="status">
+                  <span class="sr-only">Loading...</span>
+                </div>
+                <p class="mb-0 fw-small" id="noaspectResult"></p>
+              </div>
+            </div>
+            
+            </div><!-- end of .container-->
+
+
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+        <!-- Visualisasi -->
+        <section class="pt-5 pt-md-9 mb-6" id="visualiasi">
+          <h1 class="fs-9 fw-bold mb-4 text-center" id="visualisasi"> Visualisasi </h1>
+          <div class="bg-holder z-index--1 bottom-0 d-none d-lg-block" style="background-image:url('{{ url_for('static',filename='assets/img/category/shape.png') }} ');opacity:.5;">
+          </div>
+          <!--/.bg-holder-->
+  
+          <div class="container">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <!-- =============================dropdown======================= -->
+                <div class="dropdown d-flex flex-row">
+
+                  <div class="dropdown d-flex flex-column p-3 w-80">
+                    <h2 class="fs-1 fw-bold mb-2 text-left" id="selecttopik">Pilih Topik</h2>
+                    <select id="topik" class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                      <option hidden disabled selected>Pilih</option>
+                      <option value="1">Top 10 kata</option>
+                      <option value="2">Jumlah kata</option>
+                      <option value="3">Jumlah sentimen</option>
+                      <option value="4">Jumlah review per sentimen</option>
+                      <option value="5">Jumlah review menurut sentimen dan aspek</option>
+                    </select>
+                  </div>
+
+                  <div id="aspek" class="dropdowns d-flex flex-column p-3">
+                    <h2 class="fs-1 fw-bold mb-2 text-left" id="selectaspek">Pilih Aspek</h2>
+                    <select id="nilaiAspek" class="form-select form-select-sm mb-3" aria-label=".form-select-lg example">
+                      <option hidden disabled selected>Pilih</option>
+                      <option value="1">Attraction</option>
+                      <option value="2">Amenities</option>
+                      <option value="3">Access</option>
+                      <option value="4">Price</option>
+                      <option value="5">No Aspect</option>
+                    </select>
+                  </div>
+                  
+                </div> 
+
+                <div class="" id="hasilvisualisasi" >
+                      <canvas id="myChart" width="600" height="400"></canvas>
+                </div>
+            </div>
+              
+              <!-- <div class="col-lg-6"><img class="img-fluid" src="{{ url_for('static',filename='assets/img/about.png')}}" alt="" style="width: 100%; "/></div> -->
+              <div class="col-lg-6">
+                <canvas id="spiderChart"></canvas>
+              </div>
+            </div>
+          </div>
+            <!-- <div class="text-center"><button class="btn btn-warning fw-medium py-1">Sign up Now</button></div> -->
+            <div class="row mt-4">
+            
+            </div>
+            
+            
+            <!-- <div class="text-center"><a class="btn btn-warning" href="#!" role="button">SIGN UP NOW</a></div> -->
+          </div><!-- end of .container-->
+  
+        </section>
+      
+
+ <!-- ============================================-->
+      <!-- <section> begin ============================-->
+        <section class="py-md-11 py-8" id="superhero">
+
+          <div class="bg-holder z-index--1 bottom-0 d-none d-lg-block background-position-top" style="background-image: url('{{ url_for('static', filename='assets/img/superhero/oval.png') }}');opacity:.5; background-position: top !important ;">
+          </div>
+          <!--/.bg-holder-->
+  
+          <div class="container">
+            <div class="row justify-content-center">
+              <div class="col-lg-6 text-center">
+                <h1 class="fw-bold mb-4 fs-7">Anggota 3SD3!</h1>
+                <p class="mb-5 text-info fw-medium">Mari berkenalan dengan anggota 3SD3 yang paling kiwoyo<br />Happy Morning Sunshine :)</p>
+                <a class="btn btn-warning btn-md" href="{{ url_for('anggota')}}">Selengkapnya..</a>
+              </div>
+            </div>
+          </div><!-- end of .container-->
+  
+        </section>
+        <!-- <section> close ============================-->
+        <!-- ============================================-->
+
+
+        <footer class="new_footer_area bg_color" id="sectionfooter">
+          <div class="new_footer_top">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-lg-3 col-md-6">
+                          <div class="f_widget company_widget wow fadeInLeft" data-wow-delay="0.2s" style="visibility: visible; animation-delay: 0.2s; animation-name: fadeInLeft;">
+                              <h3 class="f-title f_600 t_color f_size_18">Kritik &amp; saran</h3>
+                              <p>Berikan segala masukan agar kami bisa menyajikan yang terbaik kedepannya.</p>
+                              <form action="#" class="f_subscribe_two mailchimp" method="post" novalidate="true" _lpchecked="1">
+                                  <input type="text" name="EMAIL" class="form-control memail" placeholder="Berikan masukan disini">
+                                  <button class="btn btn_get btn_get_two" type="submit">Kirim</button>
+                                  <p class="mchimp-errmessage" style="display: none;"></p>
+                                  <p class="mchimp-sucmessage" style="display: none;"></p>
+                              </form>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.4s" style="visibility: visible; animation-delay: 0.4s; animation-name: fadeInLeft;">
+                              <h3 class="f-title f_600 t_color f_size_18">Features</h3>
+                              <ul class="list-unstyled f_list">
+                                  <li><a href="#home">Home</a></li>
+                                  <li><a href="#about">About</a></li>
+                                  <li><a href="#prediksi">Prediction</a></li>
+                                  <li><a href="#visualisasi">Visualization</a></li>
+                                  <li><a href="#superhero">Team</a></li>
+                                  <li><a href="#sectionfooter">Contact Us</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="f_widget about-widget pl_70 wow fadeInLeft" data-wow-delay="0.6s" style="visibility: visible; animation-delay: 0.6s; animation-name: fadeInLeft;">
+                              <h3 class="f-title f_600 t_color f_size_18">Aspect</h3>
+                              <ul class="list-unstyled f_list">
+                                  <li><a href="#about">Attraction</a></li>
+                                  <li><a href="#headingOne">Amenities</a></li>
+                                  <li><a href="#headingTwo">Access</a></li>
+                                  <li><a href="#headingThree">Price</a></li>
+                                  <li><a href="#headingFour">No Aspect</a></li>
+                              </ul>
+                          </div>
+                      </div>
+                      <div class="col-lg-3 col-md-6">
+                          <div class="f_widget social-widget pl_70 wow fadeInLeft" data-wow-delay="0.8s" style="visibility: visible; animation-delay: 0.8s; animation-name: fadeInLeft;">
+                              <h3 class="f-title f_600 t_color f_size_18">Contact Us</h3>
+                              <div class="f_social_icon">
+                                  <a class="link-300 text-decoration-none fs-lg-1" style="color:white;" target="_blank" href="https://www.youtube.com/@PoliteknikStatistikaSTIS">
+                                    <img src="{{url_for('static', filename='assets/img/youtube.png')}}" width="20" alt="" /></a>
+                                    <a class="link-300 text-decoration-none fs-lg-1" style="color:white;" target="_blank" href="https://www.instagram.com/mal3sd3h/">
+                                      <img src="{{url_for('static', filename='assets/img/instagram.png')}}" width="20" alt="" />
+                                    </a>
+                                    <a class="link-300 text-decoration-none fs-lg-1"style="color:white;"  target="_blank" href="https://www.facebook.com/PolstatSTIS/">
+                                      <img src="{{url_for('static', filename='assets/img/facebook.png')}}" width="20" alt="" /></a>
+                                      <a class="link-300 text-decoration-none fs-lg-1"style="color:white;"  target="_blank" href="https://www.stis.ac.id/">
+                                        <img src="{{url_for('static', filename='assets/img/LogoPolstatSTIS.png')}}" width="20" alt="" /></a>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="footer_bg">
+                  <div class="footer_bg_one"></div>
+                  <div class="footer_bg_two"></div>
+              </div>
+          </div>
+          <div class="footer_bottom">
+              <div class="container">
+                  <div class="row align-items-center">
+                      <div class="col-lg-6 col-sm-7">
+                          <p class="mb-0 f_400">© 3SD3 | Politeknik Statistik STIS 2023 All rights reserved.</p>
+                      </div>
+                      <div class="col-lg-6 col-sm-5 text-right">
+                          <p>Made with love by Mal3SD3h</a></p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+        </footer>
+        
+
+
+    </main>
+    <!-- ===============================================-->
+    <!--    End of Main Content-->
+    <!-- ===============================================-->
+
+
+    <div class="modal fade" id="popupVideo" tabindex="-1" aria-labelledby="popupVideo" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+          <iframe class="rounded" style="width:100%;height:500px;" src="https://www.youtube.com/embed/N7-gniIB0Ls" title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ===============================================-->
+    <!--    JavaScripts-->
+    <!-- ===============================================-->
+    <script src="{{ url_for('static',filename='vendors/@popperjs/popper.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='vendors/bootstrap/bootstrap.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='vendors/is/is.min.js')}}"></script>
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=window.scroll"></script>
+    <script src="{{ url_for('static',filename='vendors/fontawesome/all.min.js')}}"></script>
+    <script src="{{ url_for('static',filename='assets/js/theme.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/jumlah-review.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/jumlah-sentimen.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/top10.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/sentimen.js')}}"></script>
+    <script src="{{url_for('static', filename='assets/js/jumlah-kata.js')}}"></script>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&amp;family=Volkhov:wght@700&amp;display=swap" rel="stylesheet">
+
+  <!-- WORD CLOUD -->
+  <script src="http://d3js.org/d3.v3.min.js"></script>
+  <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+  <script>
+    function wordCloud(selector) {
+        var fill = d3.scale.category20();
+
+        var svg = d3.select(selector).append("svg")
+          //  .attr("class", "wordcloud-svg")
+            .attr("width", 550)
+            .attr("height", 550)
+            .append("g")
+          //  .attr("transform", "translate(0,0)");
+            .attr("transform", "translate(275,215)");
+
+        function draw(words) {
+            var cloud = svg.selectAll("g text")
+                .data(words, function(d) { return d.text; });
+
+            cloud.enter()
+                .append("text")
+                .style("font-family", "Impact")
+                .style("fill", function(d, i) { return fill(i); })
+                .attr("text-anchor", "middle")
+                .attr('font-size', 1)
+                .text(function(d) { return d.text; });
+
+            cloud.transition()
+                .duration(600)
+                .style("font-size", function(d) { return d.size + "px"; })
+                .attr("transform", function(d) {
+                    return "translate(" + [d.x, d.y] + ")rotate(" + d.rotate + ")";
+                })
+                .style("fill-opacity", 1);
+
+            cloud.exit()
+                .transition()
+                .duration(200)
+                .style('fill-opacity', 1e-6)
+                .attr('font-size', 1)
+                .remove();
+        }
+
+        return {
+            update: function(words) {
+                d3.layout.cloud().size([600, 600])
+                    .words(words)
+                    .padding(5)
+                    .rotate(function() { return ~~(Math.random() * 2) * 90; })
+                    .font("Impact")
+                    .fontSize(function(d) { return d.size; })
+                    .on("end", draw)
+                    .start();
+            }
+        };
+    }
+
+    var wordsData = [
+        { text: "candi", size: 237/2 },
+        // { text: "borobudur", size: 127 },
+        { text: "naik", size: 61 },
+        { text: "masuk", size: 59 },
+        // { text: "tempat", size: 58 },
+        { text: "tiket", size: 47 },
+        { text: "waktu", size: 39 },
+        { text: "dunia", size: 38 },
+        { text: "wisata", size: 34 },
+        { text: "hari", size: 32 },
+        { text: "jalan", size: 31 },
+        { text: "atas", size: 29 },
+        { text: "keluar", size: 29 },
+        { text: "pintu", size: 28 },
+        { text: "jauh", size: 27 },
+        { text: "area", size: 27 },
+        { text: "payung", size: 26 },
+        { text: "anak", size: 25 },
+        { text: "harga", size: 25 },
+        { text: "sejarah", size: 25 }
+    ];
+
+    function showNewWords(vis, i) {
+      i = i || 0;
+
+        
+      vis.update(wordsData);
+      setTimeout(function() { showNewWords(vis, i + 1); }, 2000);
+    }
+
+
+    var myWordCloud = wordCloud('.word');
+    showNewWords(myWordCloud);
+</script>
+    
+  <script>
+    function predict() {
+      $('.loading').css('display','block');
+      var message = $('#message').val();
+        $.post('/predict', { message: message }, function(data) {
+          
+          if(data){
+            $('.loading').css('display','none');
+          }
+          $('#attractionResult').text(data.prediction[0]);
+            $('#amenitiesResult').text(data.prediction[1]);
+            $('#accessResult').text(data.prediction[2]);
+            $('#priceResult').text(data.prediction[3]);
+            $('#noaspectResult').text(data.prediction[4]);
+
+            $('#attractionResult').css({
+              'borderColor': color(data.prediction[0]),
+              'borderRadius': '10px',
+              'color': color(data.prediction[0]),
+              'padding': '10px' // Sesuaikan nilai sesuai keinginan Anda
+          });
+          
+          $('#amenitiesResult').css({
+              'borderColor': color(data.prediction[1]),
+              'borderRadius': '10px',
+              'color': color(data.prediction[1]),
+              'padding': '10px' // Sesuaikan nilai sesuai keinginan Anda
+          });
+          
+          $('#accessResult').css({
+              'borderColor': color(data.prediction[2]),
+              'borderRadius': '10px',
+              'color': color(data.prediction[2]),
+              'padding': '10px' // Sesuaikan nilai sesuai keinginan Anda
+          });
+          
+          $('#priceResult').css({
+              'borderColor': color(data.prediction[3]),
+              'borderRadius': '10px',
+              'color': color(data.prediction[3]),
+              'padding': '10px' // Sesuaikan nilai sesuai keinginan Anda
+          });
+          
+          $('#noaspectResult').css({
+              'borderColor': color(data.prediction[4]),
+              'borderRadius': '10px',
+              'color': color(data.prediction[4]),
+              'padding': '10px' // Sesuaikan nilai sesuai keinginan Anda
+          });
+            
+        });
+    }
+
+    function color(hasil){
+      if (hasil == 'Positive'){
+        return 'green';
+      } else if (hasil == 'Negative'){
+        return 'red';
+      } else if (hasil == 'Neutral'){
+        return 'grey';
+      } else {
+        return 'black';
+      }
+
+    }
+  </script>
+
+  <script>
+    $('#message').on('input', ()=>{
+      $('[id*="Result"]').empty()
+    })
+  </script>
+
+  <script>
+    let myChart = new Chart(
+      document.getElementById('myChart'),
+      config40
+    );
+    function updateChart(config) {
+      myChart.destroy();
+      myChart = new Chart(
+        document.getElementById('myChart'),
+        config
+      );
+    }
+  </script>
+  
+  <script>
+    $(document).ready(function() {
+      $('#topik').on('change', function() {
+        let topik = $(this).val();
+        if (topik === '1'){
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')
+          $('#aspek').addClass('d-flex flex-column');
+          $('#aspek').css('display','block');
+          $('#nilaiAspek').on('change',function(){
+            let aspek = $(this).val()
+            if (aspek === '1'){
+              updateChart(config11)
+            } else if (aspek === '2'){
+              updateChart(config12)
+            } else if (aspek === '3'){
+              updateChart(config13)
+            } else if (aspek === '4'){
+              updateChart(config14)
+            } else if (aspek === '5'){
+              updateChart(config15)
+            }
+          }); } else if (topik === '2'){
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')
+          $('#aspek').addClass('d-flex flex-column');
+          $('#aspek').css('display','block');
+          $('#nilaiAspek').on('change', function(){
+            let aspek = $(this).val()
+            if (aspek === '1'){
+              updateChart(config21)
+            } else if (aspek === '2'){
+              updateChart(config22)
+            } else if (aspek === '3'){
+              updateChart(config23)
+            } else if (aspek === '4'){
+              updateChart(config24)
+            } else if (aspek === '5'){
+              updateChart(config25)
+            }
+        }) } else if (topik === '3'){
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')          
+          $('#aspek').addClass('d-flex flex-column');
+          $('#aspek').css('display','block');
+          $('#nilaiAspek').on('change',function(){
+            let aspek = $(this).val()
+            if (aspek === '1'){
+              updateChart(config31)
+            } else if (aspek === '2'){
+              updateChart(config32)
+            } else if (aspek === '3'){
+              updateChart(config33)
+            } else if (aspek === '4'){
+              updateChart(config34)
+            } else if (aspek === '5'){
+              updateChart(config35)
+            }
+        }) } else if (topik === '4'){
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')          
+          updateChart(config40)
+          $('#aspek').removeClass('d-flex flex-column');
+          $('#aspek').css('display','none');
+        } else if (topik === '5'){
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')          
+          updateChart(config50)
+          $('#aspek').removeClass('d-flex flex-column');
+          $('#aspek').css('display','none');
+        } else {
+          $('#nilaiAspek').prop('selectedIndex', -1);
+          $('#nilaiAspek').val('')          
+          updateChart(config40)
+          $('#aspek').removeClass('d-flex flex-column');
+          $('#aspek').css('display','none');  
+        }
+      });
+    });
+  </script>
+  <!--Bar Chart Jumlah Kata Per Kelas dan Sentimen-->
+
+
+  <!-- Spider Chart -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var ctx = document.getElementById('spiderChart').getContext('2d');
+  
+        var spiderChart = new Chart(ctx, {
+            type: 'radar',
+            data: {
+      labels: ['Attraction', 'Amenities', 'Access', 'Price', 'No Aspect'],
+      datasets: [{
+          label: 'Positive',
+          data: [64.77, 27.59, 7.39, 8.30, 23.87], // Example values for Positive
+          backgroundColor: 'rgba(75, 192, 192, 0.6)',
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2
+      }, {
+          label: 'Negative',
+          data: [5.98, 8.49, 9.89, 17.52, 31.44], // Example values for Negative
+          backgroundColor: 'rgba(255, 99, 132, 0.5)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 2
+      }, {
+          label: 'Neutral',
+          data: [4.58, 10.87, 20.09, 6.11, 10.50], // Example values for Neutral
+          backgroundColor: 'rgba(255, 205, 86, 0.4)',
+          borderColor: 'rgba(255, 205, 86, 1)',
+          borderWidth: 2
+      }, {
+          label: 'None',
+          data: [24.66, 53.05, 62.64, 68.07, 34.19], // Example values for None
+          backgroundColor: 'rgba(169, 169, 169, 0.2)',
+          borderColor: 'rgba(169, 169, 169, 1)',
+          borderWidth: 2
+      }]
+      },
+        options: {
+                scale: {
+                    ticks: {
+                        beginAtZero: true,
+                        max: 100, // You can adjust the maximum value according to your needs
+                        display: false // Hide numerical values on the axes
+                    }
+                },
+                title: {
+                    display: true,
+                    text: 'Spider Chart'
+                },
+                animation: {
+                    animateRotate: true,
+                    animateScale: true
+                }
+            }
+        });
+    });
+  </script>
+</body>
+
 </html>

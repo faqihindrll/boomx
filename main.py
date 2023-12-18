@@ -8,6 +8,9 @@ app = Flask(__name__)
 def index():
     return render_template('index.html')
 
+@app.route('/anggota')
+def anggota():
+    return render_template('anggota.html')
 
 if __name__ == '__main__':
     app.run(debug=True, port=os.getenv("PORT", default=5000))
